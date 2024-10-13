@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        string currentEnter;
         int sumEven = 0;
         int numPointer = 0;
         int n;
@@ -16,8 +15,7 @@ class Program
         do
         {
             Console.Write("Введите длину последовательности: ");
-            currentEnter = Console.ReadLine();
-            isNumber = Int32.TryParse(currentEnter, out n);
+            isNumber = Int32.TryParse(Console.ReadLine(), out n);
 
             if (!isNumber || n < 0)
             {
@@ -30,8 +28,7 @@ class Program
         while (numPointer != n) 
         {
             Console.Write($"Введите целое число №{numPointer+1}: ");
-            currentEnter = Console.ReadLine();
-            isNumber = Int32.TryParse(currentEnter, out currentNumber);
+            isNumber = Int32.TryParse(Console.ReadLine(), out currentNumber);
             
             if (!isNumber)
             {
