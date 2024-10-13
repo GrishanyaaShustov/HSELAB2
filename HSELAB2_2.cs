@@ -9,7 +9,6 @@ class Program
         int currentNumber;
         int result = 0;
         int numPointer = 1;
-        string currentEnter;
         bool isNumber;
         bool isGoing = true;
         
@@ -18,8 +17,7 @@ class Program
         do
         {
             Console.Write("Введите число K1: ");
-            currentEnter = Console.ReadLine();
-            isNumber = Int32.TryParse(currentEnter, out K1);
+            isNumber = Int32.TryParse(Console.ReadLine(), out K1);
 
             if (!isNumber)
             {
@@ -32,8 +30,7 @@ class Program
         do
         {
             Console.Write("Введите число K2: ");
-            currentEnter = Console.ReadLine();
-            isNumber = Int32.TryParse(currentEnter, out K2);
+            isNumber = Int32.TryParse(Console.ReadLine(), out K2);
 
             if (!isNumber)
             {
@@ -49,8 +46,7 @@ class Program
         while (isGoing)
         {
             Console.Write($"Введите число №{numPointer}: ");
-            currentEnter = Console.ReadLine();
-            isNumber = Int32.TryParse(currentEnter, out currentNumber);
+            isNumber = Int32.TryParse(Console.ReadLine(), out currentNumber);
 
             if (!isNumber)
             {
