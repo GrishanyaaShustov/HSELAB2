@@ -19,26 +19,26 @@ class Program
             Console.Write("Введите число K1: ");
             isNumber = Int32.TryParse(Console.ReadLine(), out K1);
 
-            if (!isNumber)
+            if (!isNumber || K1 == 0)
             {
                 Console.WriteLine("\nОшибка ввода. Введенное значение не явялется целым числом или выходит за пределы типа Int32");
                 Console.WriteLine("Попробуйте еще раз\n");
             }
         }
-        while (!isNumber);
+        while (!isNumber || K1 == 0);
         
         do
         {
             Console.Write("Введите число K2: ");
             isNumber = Int32.TryParse(Console.ReadLine(), out K2);
 
-            if (!isNumber)
+            if (!isNumber || K2 == 0)
             {
                 Console.WriteLine("\nОшибка ввода. Введенное значение не явялется целым числом или выходит за пределы типа Int32");
                 Console.WriteLine("Попробуйте еще раз\n");
             }
         }
-        while (!isNumber);
+        while (!isNumber || K2 == 0);
 
         Console.WriteLine($"\nВведены числа K1: {K1}, K2: {K2}");
         Console.WriteLine("Введите последовательность целых чисел. Если хотите закончить, введите цифру 0");
