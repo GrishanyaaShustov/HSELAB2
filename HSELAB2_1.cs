@@ -1,3 +1,4 @@
+
 namespace HSELAB2_1;
 
 class Program
@@ -7,11 +8,12 @@ class Program
         int sumEven = 0;
         int numPointer = 0;
         int n;
-        int currentNumber;
-        bool isNumber; 
+        int currentNumber = 0;
+        long checkValue = 0;
+        bool isNumber;
+        bool isEvenIn = false;
         
         Console.WriteLine("Данная программа считает сумму четных чисел в веденной вами последовательности.");
-        
         do
         {
             Console.Write("Введите длину последовательности: ");
@@ -27,7 +29,7 @@ class Program
 
         while (numPointer != n) 
         {
-            Console.Write($"Введите целое число №{numPointer+1}: ");
+            Console.Write($"\nВведите целое число №{numPointer+1}: ");
             isNumber = Int32.TryParse(Console.ReadLine(), out currentNumber);
             
             if (!isNumber)
@@ -38,10 +40,24 @@ class Program
             else
             {
                 numPointer++;
-                if (currentNumber % 2 == 0) sumEven += currentNumber;  
+                if (currentNumber % 2 == 0)
+                {
+                    checkValue += currentNumber;
+                    if (checkValue <= Int32.MaxValue)
+                    {
+                        sumEven += currentNumber;
+                        isEvenIn = true;
+                    }
+                    else
+                    {
+                        numPointer--;
+                        Console.WriteLine("\nРезультат, полученный при сложении введенных чисел выходит за пределы Int32.\nВведите другое число.\n");
+                        checkValue -= currentNumber;
+                    }
+                }
             }
         }
-        Console.WriteLine($"\nСумма четных чисел в последовательности: {sumEven}"); 
+        Console.WriteLine((isEvenIn) ? $"\nСумма четных чисел в последовательности: {sumEven}" : "\nЧетных чисел в последовательности нет."); 
         Console.WriteLine("Программа завершена.");
     }
 }
