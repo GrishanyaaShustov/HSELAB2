@@ -6,8 +6,9 @@ class Program
     {
         int n;
         int result = 0;
+        long checkValue = 0;
         bool isNumber;
-
+        
         Console.WriteLine("Данная программа считает сумму последовательности n нечетных чисел: 1 + 3 + 5 + 7...\n");
 
         do
@@ -24,9 +25,16 @@ class Program
 
         for (int i = 0; i < n; i++)
         {
-            result += 2 * i + 1;
+            checkValue += 2 * i + 1;
+            if (checkValue <= Int32.MaxValue) result += 2 * i + 1;
+            else
+            {
+                Console.WriteLine("\nИз-за большого количества элементов последовательности при следующем прибавлении результат превысит тип Int32");
+                Console.WriteLine("Поэтому будет выведена последняя корректная сумма\n");
+                break;
+            }
         }
         
-        Console.WriteLine($"Сумма последовательности нечетных чисел длиной n = {n} равна: {result}");
+        Console.WriteLine($"Сумма последовательности нечетных чисел равна: {result}");
     }
 }
