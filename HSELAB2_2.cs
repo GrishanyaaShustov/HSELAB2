@@ -8,9 +8,10 @@ class Program
         int K2;
         int currentNumber;
         int result = 0;
-        int numPointer = 1;
+        int numPointer = 0;
         bool isNumber;
         bool isGoing = true;
+        bool isAliquot = false;
         
         Console.WriteLine("Данная программа считает кол-во чисел, в введенной вами последовательности, кратных K1 и не кратных K2\n");
 
@@ -45,7 +46,7 @@ class Program
 
         while (isGoing)
         {
-            Console.Write($"Введите число №{numPointer}: ");
+            Console.Write($"Введите число №{numPointer+1}: ");
             isNumber = Int32.TryParse(Console.ReadLine(), out currentNumber);
 
             if (!isNumber)
@@ -55,15 +56,24 @@ class Program
             }
             else if (isNumber && currentNumber == 0)
             {
-                Console.WriteLine("Последовательность завершена.");
-                Console.WriteLine($"Кол-во чисел кратных {K1} и не кратных {K2}: {result}");
                 isGoing = false;
             }
-            else if (isNumber && currentNumber != 0)
+            else
             {
                 numPointer++;
-                if (currentNumber % K1 == 0 && currentNumber % K2 != 0) result++;
+                if (currentNumber % K1 == 0 && currentNumber % K2 != 0)
+                {
+                    result++;
+                    isAliquot = true;
+                    if (numPointer == Int32.MaxValue)
+                    {
+                        Console.WriteLine("Достигнуто максимальное количество введенных чисел.");
+                        isGoing = false;
+                    }
+                };
             }
         }
+        Console.WriteLine("Последовательность завершена.");
+        Console.WriteLine((isAliquot) ? $"Кол-во чисел кратных {K1} и не кратных {K2}: {result}" : $"Числа кратные {K1} и не кратные {K2} в последовательности отстутствуют");
     }
 }
